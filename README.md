@@ -1,5 +1,8 @@
-﻿# Naver-Hackathon-2019-Speech-Team_Kai.Lib
- 네이버 2019 해커톤 - Speech Team Kai.Lib
+# Naver-Hackathon-2019-Speech-Team_Kai.Lib  
+ 네이버 2019 해커톤 - Speech Team Kai.Lib  
+ Team_Kai.Lib  
+ Rank : 12
+ CRR : 75.33%  
 ![Kai](https://postfiles.pstatic.net/MjAxOTEwMjVfMTUy/MDAxNTcyMDAxNDk4MDQz.wbfC31mT1MSH9W5HsJ_vusdEwVxNg3n9J8kkKxzCNFcg.TwNAlQHP0fXKxZ0VfbMbQD8e6oOAZniuXOR7Ufrx8-8g.PNG.sooftware/Kai.PNG?type=w773)  
 Korean-Speech-Recognition Using Pytorch.   
 Naver 2019 Hackathon - Speech   Team Kai.Lib   
