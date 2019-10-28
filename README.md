@@ -58,7 +58,7 @@ Seq2seq(
 네이버에서 제공한 100시간 데이터 사용
 ### Data format
 * 음성 데이터 : 16bit, mono 16k sampling PCM, WAV audio
-* 정답 스크립트 : 코드와 함께 제공되는 Character kevek ductationary를 통해서 인덱스로 변환된 정답
+* 정답 스크립트 : 코드와 함께 제공되는 Character level dictionary를 통해서 인덱스로 변환된 정답
 ```
 "네 괜찮습니다." => "715 662 127 76 396 337 669 662"
 ```
