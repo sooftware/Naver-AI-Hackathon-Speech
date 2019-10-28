@@ -45,7 +45,26 @@ Seq2seq(
 ```
 - Model based on IBM Pytorch-Seq2seq  
 ## Test Validation
-![validation](https://postfiles.pstatic.net/MjAxOTEwMjhfMTU1/MDAxNTcyMjY4NzM0OTIz.tJF3KTuKpAW07lkZcmiVfewLVbAH1nIg3fRFXtTvAr8g.roS_aPKsGs8HcvXIIE4JGy9ENHZO02Tn7qMNi2OQhIAg.PNG.sooftware/image.png?type=w773)
+```
+[2019-10-26 16:49:10,857 main.py:220 - evaluate()] target : 오픈마감시간이 어떻게 되나요?
+[2019-10-26 16:49:10,858 main.py:221 - evaluate()] predict : 오픈마감시간이 어떻게 되나요?
+[2019-10-26 16:49:10,858 main.py:220 - evaluate()] target : 방문포장 하려고 하는데요
+[2019-10-26 16:49:10,859 main.py:221 - evaluate()] predict : 방문 포장하려고 하는데요
+[2019-10-26 16:49:10,860 main.py:220 - evaluate()] target : 디저트에 아이스크림 류도 파나요?
+[2019-10-26 16:49:10,861 main.py:221 - evaluate()] predict : 저녁에 아이스크림 오픈하나요?
+[2019-10-26 16:49:10,862 main.py:220 - evaluate()] target : 봉청중앙시장쪽인데 설입쪽으로 진진하나요?
+[2019-10-26 16:49:10,863 main.py:221 - evaluate()] predict : 봉천 중앙시간 쪽인데 서비쪽도 직진하나요?
+[2019-10-26 16:49:10,864 main.py:220 - evaluate()] target : 월요일 8시에 예약 할 수 있어요?
+[2019-10-26 16:49:10,864 main.py:221 - evaluate()] predict : 오늘 8시에 예약 할수 있어요?
+[2019-10-26 16:49:10,865 main.py:220 - evaluate()] target : 얼마 이상 먹으면 주차비 무료 되나요?
+[2019-10-26 16:49:10,866 main.py:221 - evaluate()] predict : 얼마 이상 먹으면 주차비 무료 되나요?
+[2019-10-26 16:49:11,323 main.py:220 - evaluate()] target : 스테이크 중 런치 세트 메뉴는 얼마나 더 저렴할까요?
+[2019-10-26 16:49:11,325 main.py:221 - evaluate()] predict : 스테이크 중 런치 세트 메뉴 얼마나 걸릴까요?
+[2019-10-26 16:49:11,326 main.py:220 - evaluate()] predict : 테이크 아웃 하고 싶은데요
+[2019-10-26 16:49:11,327 main.py:221 - evaluate()] predict : 테이크 아웃 하고 싶은데요
+[2019-10-26 16:49:11,327 main.py:220 - evaluate()] predict : 단체 예약도 가능한가요?
+[2019-10-26 16:49:11,328 main.py:221 - evaluate()] predict : 단체 예약도 가능한가요?
+```
 ## Hyper Parameter  
 * use_attention : True  
 * bidirectional : True  
