@@ -44,6 +44,8 @@ Seq2seq(
 )
 ```
 - Model based on IBM Pytorch-Seq2seq  
+## Test Validation
+![validation](https://postfiles.pstatic.net/MjAxOTEwMjhfMTU1/MDAxNTcyMjY4NzM0OTIz.tJF3KTuKpAW07lkZcmiVfewLVbAH1nIg3fRFXtTvAr8g.roS_aPKsGs8HcvXIIE4JGy9ENHZO02Tn7qMNi2OQhIAg.PNG.sooftware/image.png?type=w773)
 ## Hyper Parameter  
 * use_attention : True  
 * bidirectional : True  
