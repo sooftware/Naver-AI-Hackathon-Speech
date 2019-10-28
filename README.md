@@ -10,6 +10,40 @@ Naver 2019 Hackathon - Speech   Team Kai.Lib
 ## Model
 ![seq2seq_with_mfcc](https://postfiles.pstatic.net/MjAxOTEwMjZfMjU0/MDAxNTcyMDc4NjQ2NjQ0.va5bywkjqAHcmx8eDoh2jofMqA4L85k8c2fC2Y06kb4g.dbx8_Rqte4YdXPjTHGEkMUD48NpwIy50M2YOCnX95cYg.PNG.sooftware/seq2seq%EA%B5%AC%EC%A1%B0.PNG?type=w773)  
 - Model Architecture : Seq2seq with Convolution Layer  
+```python
+Seq2seq(
+  (encoder): EncoderRNN(
+    (input_dropout): Dropout(p=0.5, inplace=False)
+    (conv): Sequential(
+      (0): Conv2d(1, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): Hardtanh(min_val=0, max_val=20, inplace=True)
+      (3): Conv2d(16, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (5): Hardtanh(min_val=0, max_val=20, inplace=True)
+      (6): Conv2d(32, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (8): Hardtanh(min_val=0, max_val=20, inplace=True)
+      (9): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+      (10): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (11): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (12): Hardtanh(min_val=0, max_val=20, inplace=True)
+      (13): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+      (14): Conv2d(128, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    )
+    (rnn): GRU(2560, 256, num_layers=4, batch_first=True, dropout=0.5, bidirectional=True)
+  )
+  (decoder): DecoderRNN(
+    (input_dropout): Dropout(p=0.5, inplace=False)
+    (rnn): GRU(512, 512, num_layers=4, batch_first=True, dropout=0.5)
+    (embedding): Embedding(820, 512)
+    (attention): Attention(
+      (linear_out): Linear(in_features=1024, out_features=512, bias=True)
+    )
+    (out): Linear(in_features=512, out_features=820, bias=True)
+  )
+)
+```
 - Model based on IBM Pytorch-Seq2seq  
 ## Data
 네이버에서 제공한 100시간 데이터 사용
