@@ -6,7 +6,6 @@
 ![Kai](https://postfiles.pstatic.net/MjAxOTEwMjVfMTUy/MDAxNTcyMDAxNDk4MDQz.wbfC31mT1MSH9W5HsJ_vusdEwVxNg3n9J8kkKxzCNFcg.TwNAlQHP0fXKxZ0VfbMbQD8e6oOAZniuXOR7Ufrx8-8g.PNG.sooftware/Kai.PNG?type=w773)  
 Korean-Speech-Recognition Using Pytorch.   
 Naver 2019 Hackathon - Speech   Team Kai.Lib   
-대회 결선 종료 후 소스코드 업로드 예정  
 ## Model
 ![seq2seq_with_mfcc](https://postfiles.pstatic.net/MjAxOTEwMjZfMjU0/MDAxNTcyMDc4NjQ2NjQ0.va5bywkjqAHcmx8eDoh2jofMqA4L85k8c2fC2Y06kb4g.dbx8_Rqte4YdXPjTHGEkMUD48NpwIy50M2YOCnX95cYg.PNG.sooftware/seq2seq%EA%B5%AC%EC%A1%B0.PNG?type=w773)  
 - Model Architecture : Seq2seq with Convolution Layer  
