@@ -45,6 +45,16 @@ Seq2seq(
 )
 ```
 - Model based on IBM Pytorch-Seq2seq  
+## Hyper Parameter  
+* use_attention : True  
+* bidirectional : True  
+* layer_size : 4  
+* hidden_size : 256  
+* batch_size : 32  
+* dropout : (init) 0.5  (after epoch 25) 0.3  
+* max_epochs : 30  
+* teacher_forcing : (init) 0.80  (after epoch 25) 0.99  
+* lr : (init) 1e-3  (after epoch 25) 5e-4  
 ## Data
 네이버에서 제공한 100시간 데이터 사용
 ### Data format
