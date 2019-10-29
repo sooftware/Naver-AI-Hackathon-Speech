@@ -12,9 +12,7 @@ limitations under the License.
 """
 
 import math
-
-from loader.loader import logger
-from models.conv_models import GoogLeNet, AlexNet, baseCNN, Vgg
+import torch.nn as nn
 from .baseRNN import BaseRNN
 
 class EncoderRNN(BaseRNN):
@@ -62,30 +60,29 @@ class EncoderRNN(BaseRNN):
         self.variable_lengths = variable_lengths
 
         # Create Convolution Layer for Feature
+        self.conv = nn.Sequential(
+            nn.Conv2d(1, 16, kernel_size=3, padding=1, bias=False),
+            nn.BatchNorm2d(16),
+            nn.Hardtanh(0, 20, inplace=True),
+            nn.Conv2d(16, 32, kernel_size=3, padding=1, bias=False),
+            nn.BatchNorm2d(32),
+            nn.Hardtanh(0, 20, inplace=True),
+            nn.Conv2d(32, 64, kernel_size=3, padding=1, bias=False),
+            nn.BatchNorm2d(64),
+            nn.Hardtanh(0, 20, inplace=True),
+            nn.MaxPool2d(2, 2),
+            nn.Conv2d(64, 128, kernel_size=3, padding=1, bias=False),
+            nn.BatchNorm2d(128),
+            nn.Hardtanh(0, 20, inplace=True),
+            nn.MaxPool2d(2, 2),
+            nn.Conv2d(128, 256, kernel_size=3, padding=1, bias=False),
+            nn.BatchNorm2d(256),
+            nn.Hardtanh(0, 20, inplace=True)
+        )
 
         feature_size = math.ceil((feature_size - 11 + 1 + (5 * 2)) / 2)
         feature_size = math.ceil(feature_size - 11 + 1 + (5 * 2))
         feature_size *= 128  # baseCNN 기준
-
-        if encoder_conv == 'base':
-            logger.info('Encoder conv : baseCNN')
-            cnn = baseCNN.BaseCNN()
-            self.conv = cnn.conv
-        elif encoder_conv == 'alexnet':
-            logger.info('Encoder conv : AlexNet')
-            alexnet = AlexNet.AlexNet()
-            self.conv = alexnet.conv
-        elif encoder_conv == 'googlenet':
-            logger.info('Encoder conv : GoogLeNet')
-            googlenet = GoogLeNet.GoogLeNetFCN()
-            self.conv = googlenet.conv
-        elif encoder_conv == 'vgg16':
-            logger.info('Encoder conv : VggNet16')
-            vgg16 = Vgg.VggNet16()
-            self.conv = vgg16.conv
-            feature_size = int(feature_size / 5)
-        else:
-            logger.info('Encoder Conv Error !!')
 
         self.rnn = self.rnn_cell(feature_size, hidden_size, n_layers,
                                  batch_first=True, bidirectional = bidirectional, dropout = dropout_p)

@@ -28,22 +28,19 @@ FORMAT = "[%(asctime)s %(filename)s:%(lineno)s - %(funcName)s()] %(message)s"
 logging.basicConfig(stream=sys.stdout, level=logging.DEBUG, format=FORMAT)
 logger.setLevel(logging.INFO)
 
-PAD = 0
-
-target_dict = dict()
-
-def load_targets(path):
+def load_targets(path, target_dict):
     with open(path, 'r') as f:
         for no, line in enumerate(f):
             key, target = line.strip().split(',')
             target_dict[key] = target
 
 # 정답을 리스트 형식으로 담아주는 함수
-def get_script(filepath, bos_id, eos_id):
+def get_script(filepath, bos_id, eos_id, target_dict):
     # key : 41_0508_171_0_08412_03.script 중 41_0508_171_0_08412_03 -> label
     key = filepath.split('/')[-1].split('.')[0]
     # 41_0508_171_0_08412_03 에 해당하는 label 텍스트일 듯
-    script = target_dict[key]
+
+    script = target_dict[key.split('\\')[1]]
     # 텍스트를 ' ' 기준으로 나눈다 -> 10 268 10207 와 같이 레이블 되어 있으니까!!
     tokens = script.split(' ')
 
@@ -67,10 +64,11 @@ class BaseDataset(Dataset):
     # script_paths : script_path가 모여있는 리스트 script == label
     # bos_id : Begin Of Script -> script의 시작을 표시하는 Number
     # eos_id : End Of Script -> script의 끝을 표시하는 Number
-    def __init__(self, wav_paths, script_paths, bos_id = 1307, eos_id = 1308):
+    def __init__(self, wav_paths, script_paths, bos_id = 1307, eos_id = 1308, target_dict = dict()):
         self.wav_paths = wav_paths
         self.script_paths = script_paths
         self.bos_id, self.eos_id = bos_id, eos_id
+        self.target_dict = target_dict
 
     def __len__(self):
         return len(self.wav_paths)
@@ -82,10 +80,11 @@ class BaseDataset(Dataset):
         # 음성데이터에 대한 feature를 feat에 저장 -> tensor 형식
         feat = get_librosa_mfcc(self.wav_paths[idx], n_mfcc = 40)
         # 리스트 형식으로 label을 저장
-        script = get_script(self.script_paths[idx], self.bos_id, self.eos_id)
+        script = get_script(self.script_paths[idx], self.bos_id, self.eos_id, self.target_dict)
         return feat, script
 
 def _collate_fn(batch):
+    PAD = 0
     def seq_length_(p):
         return len(p[0])
 

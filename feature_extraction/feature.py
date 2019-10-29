@@ -24,7 +24,7 @@ SAMPLE_RATE = 16000
 N_FFT = 336
 HOP_LENGTH = 84
 
-def get_librosa_melspectrogram(filepath, n_mels = 40):
+def get_librosa_melspectrogram(filepath, n_mels = 80):
     sig, sr = librosa.core.load(filepath, SAMPLE_RATE)
     mel_spectrogram = librosa.feature.melspectrogram(sig, n_mels = n_mels, n_fft = N_FFT, hop_length = HOP_LENGTH)
     mel_spectrogram = torch.FloatTensor(mel_spectrogram).transpose(0, 1)

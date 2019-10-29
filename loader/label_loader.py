@@ -19,11 +19,10 @@ limitations under the License.
 def load_label(label_path):
     char2index = dict() # [ch] = id
     index2char = dict() # [id] = ch
-    with open(label_path, 'r') as f:
+    with open(label_path, 'r', encoding = 'UTF-8') as f:
         for no, line in enumerate(f):
             if line[0] == '#': 
                 continue
-
             index, char, freq = line.strip().split('\t')
             char = char.strip()
             if len(char) == 0:
