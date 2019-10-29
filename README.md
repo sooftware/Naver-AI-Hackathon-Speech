@@ -1,18 +1,85 @@
-﻿# Naver-Hackathon-2019-Speech-Team_Kai.Lib
- 네이버 2019 해커톤 - Speech Team Kai.Lib
+# Naver-Hackathon-2019-Speech-Team_Kai.Lib  
+ 네이버 2019 해커톤 - Speech Team Kai.Lib  
+ Team : Kai.Lib  
+ Rank : 12   
+ CRR : 75.33%    
 ![Kai](https://postfiles.pstatic.net/MjAxOTEwMjVfMTUy/MDAxNTcyMDAxNDk4MDQz.wbfC31mT1MSH9W5HsJ_vusdEwVxNg3n9J8kkKxzCNFcg.TwNAlQHP0fXKxZ0VfbMbQD8e6oOAZniuXOR7Ufrx8-8g.PNG.sooftware/Kai.PNG?type=w773)  
 Korean-Speech-Recognition Using Pytorch.   
 Naver 2019 Hackathon - Speech   Team Kai.Lib   
-대회 결선 종료 후 소스코드 업로드 예정  
 ## Model
 ![seq2seq_with_mfcc](https://postfiles.pstatic.net/MjAxOTEwMjZfMjU0/MDAxNTcyMDc4NjQ2NjQ0.va5bywkjqAHcmx8eDoh2jofMqA4L85k8c2fC2Y06kb4g.dbx8_Rqte4YdXPjTHGEkMUD48NpwIy50M2YOCnX95cYg.PNG.sooftware/seq2seq%EA%B5%AC%EC%A1%B0.PNG?type=w773)  
 - Model Architecture : Seq2seq with Convolution Layer  
+```python
+Seq2seq(
+  (encoder): EncoderRNN(
+    (input_dropout): Dropout(p=0.5, inplace=False)
+    (conv): Sequential(
+      (0): Conv2d(1, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): Hardtanh(min_val=0, max_val=20, inplace=True)
+      (3): Conv2d(16, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (5): Hardtanh(min_val=0, max_val=20, inplace=True)
+      (6): Conv2d(32, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (8): Hardtanh(min_val=0, max_val=20, inplace=True)
+      (9): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+      (10): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (11): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (12): Hardtanh(min_val=0, max_val=20, inplace=True)
+      (13): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+      (14): Conv2d(128, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    )
+    (rnn): GRU(2560, 256, num_layers=4, batch_first=True, dropout=0.5, bidirectional=True)
+  )
+  (decoder): DecoderRNN(
+    (input_dropout): Dropout(p=0.5, inplace=False)
+    (rnn): GRU(512, 512, num_layers=4, batch_first=True, dropout=0.5)
+    (embedding): Embedding(820, 512)
+    (attention): Attention(
+      (linear_out): Linear(in_features=1024, out_features=512, bias=True)
+    )
+    (out): Linear(in_features=512, out_features=820, bias=True)
+  )
+)
+```
 - Model based on IBM Pytorch-Seq2seq  
+## Test Validation
+```
+[2019-10-26 16:49:10,857 main.py:220 - evaluate()] target : 오픈마감시간이 어떻게 되나요?
+[2019-10-26 16:49:10,858 main.py:221 - evaluate()] predict : 오픈마감시간이 어떻게 되나요?
+[2019-10-26 16:49:10,858 main.py:220 - evaluate()] target : 방문포장 하려고 하는데요
+[2019-10-26 16:49:10,859 main.py:221 - evaluate()] predict : 방문 포장하려고 하는데요
+[2019-10-26 16:49:10,860 main.py:220 - evaluate()] target : 디저트에 아이스크림 류도 파나요?
+[2019-10-26 16:49:10,861 main.py:221 - evaluate()] predict : 저녁에 아이스크림 오픈하나요?
+[2019-10-26 16:49:10,862 main.py:220 - evaluate()] target : 봉청중앙시장쪽인데 설입쪽으로 진진하나요?
+[2019-10-26 16:49:10,863 main.py:221 - evaluate()] predict : 봉천 중앙시간 쪽인데 서비쪽도 직진하나요?
+[2019-10-26 16:49:10,864 main.py:220 - evaluate()] target : 월요일 8시에 예약 할 수 있어요?
+[2019-10-26 16:49:10,864 main.py:221 - evaluate()] predict : 오늘 8시에 예약 할수 있어요?
+[2019-10-26 16:49:10,865 main.py:220 - evaluate()] target : 얼마 이상 먹으면 주차비 무료 되나요?
+[2019-10-26 16:49:10,866 main.py:221 - evaluate()] predict : 얼마 이상 먹으면 주차비 무료 되나요?
+[2019-10-26 16:49:11,323 main.py:220 - evaluate()] target : 스테이크 중 런치 세트 메뉴는 얼마나 더 저렴할까요?
+[2019-10-26 16:49:11,325 main.py:221 - evaluate()] predict : 스테이크 중 런치 세트 메뉴 얼마나 걸릴까요?
+[2019-10-26 16:49:11,326 main.py:220 - evaluate()] predict : 테이크 아웃 하고 싶은데요
+[2019-10-26 16:49:11,327 main.py:221 - evaluate()] predict : 테이크 아웃 하고 싶은데요
+[2019-10-26 16:49:11,327 main.py:220 - evaluate()] predict : 단체 예약도 가능한가요?
+[2019-10-26 16:49:11,328 main.py:221 - evaluate()] predict : 단체 예약도 가능한가요?
+```
+## Hyper Parameter  
+* use_attention : True  
+* bidirectional : True  
+* layer_size : 4  
+* hidden_size : 256  
+* batch_size : 32  
+* dropout : (init) 0.5  (after epoch 25) 0.3  
+* max_epochs : 30  
+* teacher_forcing : (init) 0.80  (after epoch 25) 0.99  
+* lr : (init) 1e-4  (after epoch 25) 5e-4  
 ## Data
 네이버에서 제공한 100시간 데이터 사용
 ### Data format
 * 음성 데이터 : 16bit, mono 16k sampling PCM, WAV audio
-* 정답 스크립트 : 코드와 함께 제공되는 Character kevek ductationary를 통해서 인덱스로 변환된 정답
+* 정답 스크립트 : 코드와 함께 제공되는 Character level dictionary를 통해서 인덱스로 변환된 정답
 ```
 "네 괜찮습니다." => "715 662 127 76 396 337 669 662"
 ```
