@@ -16,11 +16,11 @@ global index2char
 global SOS_token
 global EOS_token
 global PAD_token
-DATASET_PATH = './train/'
+DATASET_PATH = './data/'
 target_dict = dict()
 
 hyper_p = HyperParams()
-#hyper_p.input_params()
+hyper_p.input_params()
 
 char2index, index2char = label_loader.load_label('./hackathon.labels')
 SOS_token = char2index['<s>']
@@ -75,7 +75,9 @@ target_path = os.path.join(DATASET_PATH, 'train_label')
 load_targets(target_path, target_dict)
 
 # 데이터 로드 end
-train_batch_num, train_dataset_list, valid_dataset = split_dataset(hyper_p, wav_paths, script_paths, valid_ratio = 0.05,
+train_batch_num, train_dataset_list, valid_dataset = split_dataset(hyper_p, wav_paths,
+                                                                   script_paths,
+                                                                   valid_ratio = 0.05,
                                                                    target_dict = target_dict)
 
 
@@ -89,7 +91,7 @@ for epoch in range(begin_epoch, hyper_p.max_epochs):
     train_loader = MultiLoader(train_dataset_list, train_queue, hyper_p.batch_size, hyper_p.workers)
     train_loader.start()
 
-    if epoch == 30:
+    if epoch == 25:
         optimizer = optim.Adam(model.module.parameters(), lr = 0.00005 )
 
     train_loss, train_cer = train(model, train_batch_num,
