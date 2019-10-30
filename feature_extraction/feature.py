@@ -4,10 +4,7 @@ get_librosa_melspectrogram : get Mel-Spectrogram feature using librosa library
 get_librosa_mfcc : get MFCC (Mel-Frequency-Cepstral-Coefficient) feature using librosa library
 
 FRAME_LENGTH : 21ms
-STRIDE : 10.5ms ( 50% duplicated )
-
-=> FRAME_LENGTH 21ms 이하는 거의 의미가 없다는 논문 내용 참고
-=> STRIDE는 50% 겹치게 적용 'Voice Recognition Using MFCC Algorithm' 논문 참고
+STRIDE : 5.2ms ( 75% duplicated )
 
 FRAME_LENGTH = N_FFT / SAMPLE_RATE => N_FFT = 336
 STRIDE = HOP_LENGTH / SAMPLE_RATE => STRIDE = 168
