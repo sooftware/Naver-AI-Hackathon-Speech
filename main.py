@@ -113,5 +113,11 @@ for epoch in range(begin_epoch, hyper_p.max_epochs):
 
     valid_loader.join()
 
-    best_model = (eval_loss < best_loss)
+    best_loss_model = (eval_loss < best_loss)
     best_cer_model = (eval_cer < best_cer)
+
+    if best_loss_model:
+        torch.save(model, "./weight_file/best_loss")
+
+    if best_cer_model:
+        torch.save(model, "./weight_file/best_cer")
