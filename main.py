@@ -19,38 +19,38 @@ global PAD_token
 DATASET_PATH = './data/'
 target_dict = dict()
 
-hyper_p = HyperParams()
-hyper_p.input_params()
+h_params = HyperParams()
+h_params.input_params()
 
 char2index, index2char = label_loader.load_label('./hackathon.labels')
 SOS_token = char2index['<s>']
 EOS_token = char2index['</s>']
 PAD_token = char2index['_']
 
-random.seed(hyper_p.seed)
-torch.manual_seed(hyper_p.seed)
-torch.cuda.manual_seed_all(hyper_p.seed)
-cuda = not hyper_p.no_cuda and torch.cuda.is_available()
+random.seed(h_params.seed)
+torch.manual_seed(h_params.seed)
+torch.cuda.manual_seed_all(h_params.seed)
+cuda = not h_params.no_cuda and torch.cuda.is_available()
 device = torch.device('cuda' if cuda else 'cpu')
 
 feature_size = 40  # MFCC n_mfcc = 40이라 40
 
-enc = EncoderRNN(feature_size, hyper_p.hidden_size ,
-                 input_dropout_p = hyper_p.dropout, dropout_p = hyper_p.dropout,
-                 n_layers = hyper_p.layer_size,
-                 bidirectional = hyper_p.bidirectional, rnn_cell = 'gru', variable_lengths = False)
+enc = EncoderRNN(feature_size, h_params.hidden_size ,
+                 input_dropout_p = h_params.dropout, dropout_p = h_params.dropout,
+                 n_layers = h_params.layer_size,
+                 bidirectional = h_params.bidirectional, rnn_cell = 'gru', variable_lengths = False)
 
-dec = DecoderRNN(len(char2index), hyper_p.max_len, hyper_p.hidden_size * (2 if hyper_p.bidirectional else 1),
+dec = DecoderRNN(len(char2index), h_params.max_len, h_params.hidden_size * (2 if h_params.bidirectional else 1),
                  SOS_token, EOS_token,
-                 n_layers = hyper_p.layer_size, rnn_cell = 'gru', bidirectional = hyper_p.bidirectional,
-                 input_dropout_p = hyper_p.dropout, dropout_p = hyper_p.dropout, use_attention = hyper_p.attention)
+                 n_layers = h_params.layer_size, rnn_cell = 'gru', bidirectional = h_params.bidirectional,
+                 input_dropout_p = h_params.dropout, dropout_p = h_params.dropout, use_attention = h_params.attention)
 
 model = Seq2seq(enc, dec)
 model.flatten_parameters()
 model = nn.DataParallel(model).to(device) # 병렬처리 부분인 듯
 
 # Adam Algorithm
-optimizer = optim.Adam(model.module.parameters(), lr = hyper_p.lr)
+optimizer = optim.Adam(model.module.parameters(), lr = h_params.lr)
 # CrossEntropy로 loss 계산
 criterion = nn.CrossEntropyLoss(reduction='sum', ignore_index=PAD_token).to(device)
 
@@ -75,7 +75,7 @@ target_path = os.path.join(DATASET_PATH, 'train_label')
 load_targets(target_path, target_dict)
 
 # 데이터 로드 end
-train_batch_num, train_dataset_list, valid_dataset = split_dataset(hyper_p, wav_paths,
+train_batch_num, train_dataset_list, valid_dataset = split_dataset(h_params, wav_paths,
                                                                    script_paths,
                                                                    valid_ratio = 0.05,
                                                                    target_dict = target_dict)
@@ -85,27 +85,28 @@ logger.info('start')
 train_begin = time.time()
 
 
-for epoch in range(begin_epoch, hyper_p.max_epochs):
-    train_queue = queue.Queue(hyper_p.workers * 2)
+for epoch in range(begin_epoch, h_params.max_epochs):
+    train_queue = queue.Queue(h_params.workers * 2)
 
-    train_loader = MultiLoader(train_dataset_list, train_queue, hyper_p.batch_size, hyper_p.workers)
+    train_loader = MultiLoader(train_dataset_list, train_queue, h_params.batch_size, h_params.workers)
     train_loader.start()
 
     if epoch == 25:
         optimizer = optim.Adam(model.module.parameters(), lr = 0.00005 )
+        h_params.teacher_forcing = 0.99
 
     train_loss, train_cer = train(model, train_batch_num,
                                   train_queue, criterion,
                                   optimizer, device,
-                                  train_begin, hyper_p.workers,
-                                  10, hyper_p.teacher_forcing)
+                                  train_begin, h_params.workers,
+                                  10, h_params.teacher_forcing)
 
     logger.info('Epoch %d (Training) Loss %0.4f CER %0.4f' % (epoch, train_loss, train_cer))
 
     train_loader.join()
 
-    valid_queue = queue.Queue(hyper_p.workers * 2)
-    valid_loader = BaseDataLoader(valid_dataset, valid_queue, hyper_p.batch_size, 0)
+    valid_queue = queue.Queue(h_params.workers * 2)
+    valid_loader = BaseDataLoader(valid_dataset, valid_queue, h_params.batch_size, 0)
     valid_loader.start()
 
     eval_loss, eval_cer = evaluate(model, valid_loader, valid_queue, criterion, device)
@@ -113,11 +114,11 @@ for epoch in range(begin_epoch, hyper_p.max_epochs):
 
     valid_loader.join()
 
-    best_loss_model = (eval_loss < best_loss)
-    best_cer_model = (eval_cer < best_cer)
+    is_best_loss = (eval_loss < best_loss)
+    is_best_cer = (eval_cer < best_cer)
 
-    if best_loss_model:
+    if is_best_loss:
         torch.save(model, "./best_loss")
 
-    if best_cer_model:
+    if is_best_cer:
         torch.save(model, "./best_cer")
