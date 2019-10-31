@@ -4,7 +4,8 @@ class HyperParams():
         self.attention = False
         self.hidden_size = 256
         self.dropout = 0.5
-        self.layer_size = 4
+        self.encoder_layer_size = 9
+        self.decoder_layer_size = 3
         self.batch_size = 32
         self.workers = 1
         self.max_epochs = 30
@@ -25,7 +26,8 @@ class HyperParams():
             self.attention = True
         self.hidden_size = int(input("hidden_size : "))
         self.dropout = float(input("dropout : "))
-        self.layer_size = int(input("layer_size : "))
+        self.encoder_layer_size = int(input("encoder_layer_size : "))
+        self.decoder_layer_size = int(input("decoder_layer_size : "))
         self.batch_size = int(input("batch_size"))
         self.workers = int(input("workers : "))
         self.max_epochs = int(input("max_epochs : "))

@@ -18,7 +18,6 @@ from .baseRNN import BaseRNN
 class EncoderRNN(BaseRNN):
     """
     Applies a multi-layer RNN to an input sequence.
-
     Args:
         vocab_size (int): size of the vocabulary
         max_len (int): a maximum allowed length for the sequence to be processed
@@ -33,21 +32,16 @@ class EncoderRNN(BaseRNN):
             the size of the embedding parameter: (vocab_size, hidden_size).  The embedding layer would be initialized
             with the tensor if provided (default: None).
         update_embedding (bool, optional): If the embedding should be updated during training (default: False).
-
     Inputs: inputs, input_lengths
         - **inputs**: list of sequences, whose length is the batch size and within which each sequence is a list of token IDs.
         - **input_lengths** (list of int, optional): list that contains the lengths of sequences
             in the mini-batch, it must be provided when using variable length RNN (default: `None`)
-
     Outputs: output, hidden
         - **output** (batch, seq_len, hidden_size): tensor containing the encoded features of the input sequence
         - **hidden** (num_layers * num_directions, batch, hidden_size): tensor containing the features in the hidden state `h`
-
     Examples::
-
          >>> encoder = EncoderRNN(input_vocab, max_seq_length, hidden_size)
          >>> output, hidden = encoder(input)
-
     """
 
     def __init__(self, feature_size, hidden_size,
@@ -80,9 +74,7 @@ class EncoderRNN(BaseRNN):
             nn.Hardtanh(0, 20, inplace=True)
         )
 
-        feature_size = math.ceil((feature_size - 11 + 1 + (5 * 2)) / 2)
-        feature_size = math.ceil(feature_size - 11 + 1 + (5 * 2))
-        feature_size *= 128  # baseCNN 기준
+        feature_size *= 64
 
         self.rnn = self.rnn_cell(feature_size, hidden_size, n_layers,
                                  batch_first=True, bidirectional = bidirectional, dropout = dropout_p)
@@ -91,19 +83,17 @@ class EncoderRNN(BaseRNN):
     def forward(self, input_var, input_lengths=None):
         """
         Applies a multi-layer RNN to an input sequence.
-
         Args:
             input_var (batch, seq_len): tensor containing the features of the input sequence.
             input_lengths (list of int, optional): A list that contains the lengths of sequences
               in the mini-batch
-
         Returns: output, hidden
             - **output** (batch, seq_len, hidden_size): variable containing the encoded features of the input sequence
                           => (32, 257, 512)
             - **hidden** (num_layers * num_directions, batch, hidden_size): variable containing the features in the hidden state h
                           => (16, 32, 512)
         """
-        
+
         input_var = input_var.unsqueeze(1)
         x = self.conv(input_var)
         x = x.transpose(1, 2)

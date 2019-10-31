@@ -20,7 +20,7 @@ DATASET_PATH = './data/'
 target_dict = dict()
 
 h_params = HyperParams()
-h_params.input_params()
+#h_params.input_params()
 
 char2index, index2char = label_loader.load_label('./hackathon.labels')
 SOS_token = char2index['<s>']
@@ -37,12 +37,12 @@ feature_size = 40  # MFCC n_mfcc = 40이라 40
 
 enc = EncoderRNN(feature_size, h_params.hidden_size ,
                  input_dropout_p = h_params.dropout, dropout_p = h_params.dropout,
-                 n_layers = h_params.layer_size,
+                 n_layers = h_params.encoder_layer_size,
                  bidirectional = h_params.bidirectional, rnn_cell = 'gru', variable_lengths = False)
 
 dec = DecoderRNN(len(char2index), h_params.max_len, h_params.hidden_size * (2 if h_params.bidirectional else 1),
                  SOS_token, EOS_token,
-                 n_layers = h_params.layer_size, rnn_cell = 'gru', bidirectional = h_params.bidirectional,
+                 n_layers = h_params.decoder_layer_size, rnn_cell = 'gru', bidirectional = h_params.bidirectional,
                  input_dropout_p = h_params.dropout, dropout_p = h_params.dropout, use_attention = h_params.attention)
 
 model = Seq2seq(enc, dec)
