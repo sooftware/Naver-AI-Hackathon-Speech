@@ -66,13 +66,20 @@ Seq2seq(
 [2019-10-26 16:49:11,328 main.py:221 - evaluate()] predict : 단체 예약도 가능한가요?
 ```
 ## Hyper Parameter  
-* use_attention : True  
-* bidirectional : True  
-* layer_size : 4  
-* hidden_size : 256  
-* batch_size : 32  
+| Hyper Parames  | Default    |  
+| ----------     | :--------- |  
+| Left           | Center     |   
+| use_attention  | True       |
+| layer_size     | 4          |
+| hidden_size    | 256        |
+| batch_size     | 32         |
+| dropout        | 0.5        |
+| teacher_forcing| 0.8        |
+| lr             | 1e-4       |
+| max_epochs     | 30         |  
+
+
 * dropout : (init) 0.5  (after epoch 25) 0.3  
-* max_epochs : 30  
 * teacher_forcing : (init) 0.80  (after epoch 25) 0.99  
 * lr : (init) 1e-4  (after epoch 25) 5e-5  
 ## Data
