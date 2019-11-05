@@ -67,7 +67,7 @@ Seq2seq(
 ```
 ## Hyper Parameter  
 | Hyper Parames  | Default    |  
-| :----------:   | :---------:|    
+| :----------    | :---------:|    
 | use_attention  | True       |
 | layer_size     | 4          |
 | hidden_size    | 256        |
