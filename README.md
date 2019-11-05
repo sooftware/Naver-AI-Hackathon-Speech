@@ -67,8 +67,7 @@ Seq2seq(
 ```
 ## Hyper Parameter  
 | Hyper Parames  | Default    |  
-| ----------     | :--------- |  
-| Left           | Center     |   
+| ----------     | :--------- |    
 | use_attention  | True       |
 | layer_size     | 4          |
 | hidden_size    | 256        |
@@ -77,6 +76,7 @@ Seq2seq(
 | teacher_forcing| 0.8        |
 | lr             | 1e-4       |
 | max_epochs     | 30         |  
+| Left           | Center     | 
 
 
 * dropout : (init) 0.5  (after epoch 25) 0.3  
