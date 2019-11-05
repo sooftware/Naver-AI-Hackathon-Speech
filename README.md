@@ -6,7 +6,7 @@
 ![Kai](https://postfiles.pstatic.net/MjAxOTEwMjZfMjE4/MDAxNTcyMDc4NjQ2NjI3.s9fnZvZKtm3qRGBpKZv3zSQwj70TS07EiOyutpGSpjAg.r3-m8zykBCLFJ2BhF1dhreyD5liI2NsnOh9bVSgkPZwg.PNG.sooftware/Kai.PNG?type=w773)  
 Korean-Speech-Recognition Using Pytorch.   
 Naver 2019 Hackathon - Speech   Team Kai.Lib   
-[Test Prototype Repository](https://github.com/sh951011/My-Capstone-Application)  
+[](https://github.com/sh951011/My-Capstone-Application)  
 ## Team Member
 * [김수환](https://github.com/sh951011)  
 * [배세영](https://github.com/triplet02)  
