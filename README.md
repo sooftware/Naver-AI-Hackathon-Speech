@@ -8,9 +8,9 @@ Korean-Speech-Recognition Using Pytorch.
 Naver 2019 Hackathon - Speech   Team Kai.Lib   
 [Demonstration Application](https://github.com/sh951011/My-Capstone-Application)  
 ## Team Member
-* [김수환](https://github.com/sh951011) Kwangwoon Univ.   
-* [배세영](https://github.com/triplet02) Kwangwoon Univ.    
-* [원철황](https://github.com/wch18735) Kwangwoon Univ.   
+* [김수환](https://github.com/sh951011) Kwangwoon Univ. 3rd year   
+* [배세영](https://github.com/triplet02) Kwangwoon Univ. 3rd year  
+* [원철황](https://github.com/wch18735) Kwangwoon Univ. 3rd year  
 ## Model
 ![seq2seq_with_mfcc](https://postfiles.pstatic.net/MjAxOTEwMjZfMjU0/MDAxNTcyMDc4NjQ2NjQ0.va5bywkjqAHcmx8eDoh2jofMqA4L85k8c2fC2Y06kb4g.dbx8_Rqte4YdXPjTHGEkMUD48NpwIy50M2YOCnX95cYg.PNG.sooftware/seq2seq%EA%B5%AC%EC%A1%B0.PNG?type=w773)  
 - Model Architecture : Seq2seq with Convolution Layer  
@@ -89,9 +89,9 @@ Seq2seq(
 * lr : (init) 1e-4  (after epoch 25) 5e-5  
 ## Hyper Parameters Experiment  
 60시간 데이터로 실험   
+  
 ![experiment_table](https://postfiles.pstatic.net/MjAxOTExMDdfMyAg/MDAxNTczMTE1MzI3Njgw.7FzpAYgiE2fVLT7BGO1QQfLLKpwlMlFRVA_KG0jJb9Ug.h_PTVerEJAUNiBbl-VgmImverS7YptfPuLe6D6b9-hsg.PNG.sooftware/image.png?type=w773)   
 CRR : Character Recognition Rate  
-60시간 데이터로 실험  
 ## Data
 네이버에서 제공한 100시간 데이터 사용
 ### Data format
