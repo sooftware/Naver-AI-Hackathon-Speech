@@ -71,7 +71,7 @@ Seq2seq(
 [2019-10-26 16:49:11,328 main.py:221 - evaluate()] predict : 단체 예약도 가능한가요?
 ```
 ## Hyper Parameter  
-| Hyper Parames  | Default    |  
+| Hyper Param s  | Default    |  
 | :----------    | :---------:|    
 | use_attention  | True       |
 | layer_size     | 4          |
