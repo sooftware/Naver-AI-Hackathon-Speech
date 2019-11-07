@@ -90,6 +90,7 @@ Seq2seq(
 ## Hyper Parameters Experiment  
 ![experiment_table](https://postfiles.pstatic.net/MjAxOTExMDdfMyAg/MDAxNTczMTE1MzI3Njgw.7FzpAYgiE2fVLT7BGO1QQfLLKpwlMlFRVA_KG0jJb9Ug.h_PTVerEJAUNiBbl-VgmImverS7YptfPuLe6D6b9-hsg.PNG.sooftware/image.png?type=w773)  
 CRR : Character Recognition Rate  
+60시간 데이터로 실험  
 ## Data
 네이버에서 제공한 100시간 데이터 사용
 ### Data format
