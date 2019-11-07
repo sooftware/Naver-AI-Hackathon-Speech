@@ -87,6 +87,9 @@ Seq2seq(
 * dropout : (init) 0.5  (after epoch 25) 0.3  
 * teacher_forcing : (init) 0.80  (after epoch 25) 0.99  
 * lr : (init) 1e-4  (after epoch 25) 5e-5  
+## Hyper Parameters Experiment  
+![experiment_table](https://postfiles.pstatic.net/MjAxOTExMDdfMyAg/MDAxNTczMTE1MzI3Njgw.7FzpAYgiE2fVLT7BGO1QQfLLKpwlMlFRVA_KG0jJb9Ug.h_PTVerEJAUNiBbl-VgmImverS7YptfPuLe6D6b9-hsg.PNG.sooftware/image.png?type=w773)  
+CRR : Character Recognition Rate  
 ## Data
 네이버에서 제공한 100시간 데이터 사용
 ### Data format
