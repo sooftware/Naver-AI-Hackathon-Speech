@@ -12,7 +12,7 @@ Naver 2019 Hackathon - Speech   Team Kai.Lib
 * [배세영](https://github.com/triplet02) Kwangwoon Univ. 3rd year  
 * [원철황](https://github.com/wch18735) Kwangwoon Univ. 3rd year  
 ## Model
-![seq2seq_with_mfcc](https://postfiles.pstatic.net/MjAxOTEwMjZfMjU0/MDAxNTcyMDc4NjQ2NjQ0.va5bywkjqAHcmx8eDoh2jofMqA4L85k8c2fC2Y06kb4g.dbx8_Rqte4YdXPjTHGEkMUD48NpwIy50M2YOCnX95cYg.PNG.sooftware/seq2seq%EA%B5%AC%EC%A1%B0.PNG?type=w773)  
+![seq2seq_with_mfcc](https://postfiles.pstatic.net/MjAxOTExMjRfMTgz/MDAxNTc0NTMyODg5NTcz.zvNRy_te6fnXQQgwPu-O_IsaT5bAsg8kh6kt4tMJpbcg.nQLtyptcim3yRyFZXWhPuE6Fa20G6cm6gEqeAUGy9Vwg.PNG.sooftware/image.png?type=w773)  
 - Model Architecture : Seq2seq with Convolution Layer  
 ```python
 Seq2seq(
