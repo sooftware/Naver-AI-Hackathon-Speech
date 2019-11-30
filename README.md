@@ -1,5 +1,5 @@
-# Naver-Hackathon-2019-Speech-Team_Kai.Lib  
- 네이버 2019 해커톤 - Speech Team Kai.Lib  
+# Naver-AI-Hackathon-2019-Speech-Team_Kai.Lib  
+ 네이버 AI 해커톤 2019 - Speech Team Kai.Lib  
  Team : Kai.Lib  
  Rank : 12   
  CRR : 75.33%    
