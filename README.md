@@ -77,8 +77,8 @@ Seq2seq(
 | layer_size       | 4          |
 | hidden_size      | 256        |
 | batch_size       | 32         |
-| dropout          | 0.5        |
-| teacher_forcing  | 0.8        |
+| dropout          | 0.5 -> 0.3 |
+| teacher_forcing  | 0.8 -> 0.99|
 | lr               | 1e-4       |
 | max_epochs       | 30         |  
 
