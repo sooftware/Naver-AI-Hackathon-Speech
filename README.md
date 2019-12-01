@@ -135,7 +135,7 @@ CRR = (1.0 - CER) * 100.0
 ```
 * CRR : Character Recognition Rate
 * CER : Character Error Rate based on Edit Distance
-![crr](https://postfiles.pstatic.net/MjAxOTEwMjVfODUg/MDAxNTcyMDEwNjg4NDk2.LlS0LaNboVQ7HuVvMqkKHljALDmvtb2WbHx2rkpojRIg.tUZ-dCceP_uloYsX2qTKFdNKEB72jWjedYMet2WiMbMg.PNG.sooftware/image.png?type=w773)
+![crr](https://postfiles.pstatic.net/MjAxOTEyMDFfMTQ2/MDAxNTc1MTU4NTkzMzUx.0aWYbABSdoUu2j3TcxZ45nAcBQTll-ALGMqDRhtxiN8g.lgG6qoufSZLgRJ1RuShcQ5Fn3KA5r9vkf3ZjpKSeBCUg.PNG.sooftware/image.png?type=w773)
 ## Feature
 ![MFCC](https://postfiles.pstatic.net/MjAxOTEwMjdfMTEx/MDAxNTcyMTI2NDEyMTQw.pJz6E6fK0SbPebKIgk_s0Kaw3pg2h4eyPO0nwjYCLPcg.zkb5BMsEEAMpmoD7eKJkW98N4JeGm4d_W98raAa5luUg.PNG.sooftware/image.png?type=w773)   
 * MFCC (Mel-Frequency Cepstral Coefficient)
