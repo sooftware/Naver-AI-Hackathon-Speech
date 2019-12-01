@@ -31,7 +31,7 @@ else:
 
 
 class DecoderRNN(BaseRNN):
-    r"""
+    """
     Provides functionality for decoding in a seq2seq framework, with an option for attention.
     Args:
         vocab_size (int): size of the vocabulary
@@ -86,27 +86,6 @@ class DecoderRNN(BaseRNN):
         self.bidirectional_encoder = bidirectional
         # rnn_cell -> gru를 의미
         self.rnn = self.rnn_cell(hidden_size , hidden_size, n_layers, batch_first=True, dropout=dropout_p)
-
-        '''
-                GRU
-                num_directions : bidirectional이면 2 아니면 1
-                input1 : (L,N,H_in) H_in == input_size, L == sequence length
-                input2 : (S,N,H_out) H_out == hidden_size, S == num_layer * num_directions if the RNN is bidirectional
-                Output1 : (L,N,H_all) H_all == num_directions * hidden_size
-                Output2 : (S,N,H_out) tensor containing the next hidden state for each element in the batch
-                input1 -> input
-                input2 -> h_0
-                output1 -> output
-                output2 -> h_n
-                즉,
-                output은 (feature_size,  Batch(?), Hidden_size)
-                hidden은 (num_layers * num_directions, Batch(?), Hidden_size)
-                -> print(output.shape)
-                -> print(hidden.shape)
-                hidden 은 context!! -> 주변 cell
-                output 은 타겟!! -> 해당 cell
-                '''
-
         self.output_size = vocab_size # 발음 개수 사이즈만큼 output을 내놓아야 하니까!!
         self.max_length = max_len
         self.use_attention = use_attention
@@ -143,7 +122,40 @@ class DecoderRNN(BaseRNN):
 
         inputs, batch_size, max_length = self._validate_args(inputs, encoder_hidden, encoder_outputs,
                                                              function, teacher_forcing_ratio)
+        # (layer_size, batch_size, hidden_size)
         decoder_hidden = self._init_state(encoder_hidden)
+
+        #========================================
+        # Differ Encoder & Decoder Layer size
+        # ===== by Soo-Hwan
+        #
+        # B : batch_size, L : layer_size, H : hidden_size
+        # LxBxH -> BxLxH
+
+        BxLxH = decoder_hidden.transpose(0, 1)
+        decoder_hidden = torch.FloatTensor()
+        endec_ratio = int(len(encoder_hidden) / self.n_layers)   # Ex) enc : 8 , dec : 2 -> enc_per_dec = 4
+
+        for batch in BxLxH:             # => BxLxH 에서 item으로 받으므로 LxH 단위로 access
+            LxH = torch.FloatTensor()
+            for i in range(0, len(encoder_hidden), endec_ratio):
+                enc_sum = 0
+                for j in range(int(endec_ratio)):
+                    enc_sum += batch[i + j]
+                LxH = torch.cat( [LxH, enc_sum / endec_ratio ] )
+            decoder_hidden = torch.cat( [decoder_hidden, LxH] )
+        decoder_hidden = decoder_hidden.view(len(encoder_hidden[0]), self.n_layers, self.hidden_size)
+        decoder_hidden = decoder_hidden.transpose(0, 1)
+
+        #   -* Comment *-
+        #   Encoder & Decoder 사이즈 다르게 하는 부분
+        #   인코더의 hidden_state 를 1 : 1 로 매핑하는 기존 코드에서
+        #   순서대로 인코더의 enc_per_dec 개 레이어
+        #   => 1개 레이어 로 평균내는 방법으로 decoder_hidden 초기화
+        #
+        # ===== Encoder & Decoder layer size test
+        # ===============================================
+
         use_teacher_forcing = True if random.random() < teacher_forcing_ratio else False
 
         decoder_outputs = []

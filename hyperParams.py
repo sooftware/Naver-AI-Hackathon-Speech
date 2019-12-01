@@ -4,7 +4,7 @@ class HyperParams():
         self.attention = False
         self.hidden_size = 256
         self.dropout = 0.5
-        self.encoder_layer_size = 9
+        self.encoder_layer_size = 6
         self.decoder_layer_size = 3
         self.batch_size = 32
         self.workers = 1

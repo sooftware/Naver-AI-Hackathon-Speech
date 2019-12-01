@@ -11,7 +11,6 @@ See the License for the specific language governing permissions and
 limitations under the License.
 """
 
-import math
 import torch.nn as nn
 from .baseRNN import BaseRNN
 
@@ -52,8 +51,6 @@ class EncoderRNN(BaseRNN):
                 input_dropout_p, dropout_p, n_layers, rnn_cell)
 
         self.variable_lengths = variable_lengths
-
-        # Create Convolution Layer for Feature
         self.conv = nn.Sequential(
             nn.Conv2d(1, 16, kernel_size=3, padding=1, bias=False),
             nn.BatchNorm2d(16),
@@ -73,7 +70,6 @@ class EncoderRNN(BaseRNN):
             nn.BatchNorm2d(256),
             nn.Hardtanh(0, 20, inplace=True)
         )
-
         feature_size *= 64
 
         self.rnn = self.rnn_cell(feature_size, hidden_size, n_layers,
