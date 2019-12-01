@@ -1,13 +1,16 @@
 """
-feature for Speech Recognition
-get_librosa_melspectrogram : get Mel-Spectrogram feature using librosa library
-get_librosa_mfcc : get MFCC (Mel-Frequency-Cepstral-Coefficient) feature using librosa library
-FRAME_LENGTH : 21ms
-STRIDE : 5.2ms ( 75% duplicated )
-FRAME_LENGTH = N_FFT / SAMPLE_RATE => N_FFT = 336
-STRIDE = HOP_LENGTH / SAMPLE_RATE => STRIDE = 168
-=> 확장성보다는 빠른 학습을 위해 미리 계산해서 상수로 적용
-by Kai.lib
+  -*- coding: utf-8 -*-
+
+  * Feature Extraction for Speech Recognition
+
+  get_librosa_melspectrogram : get Mel-Spectrogram feature using librosa library
+  get_librosa_mfcc : get MFCC (Mel-Frequency-Cepstral-Coefficient) feature using librosa library
+
+  FRAME_LENGTH : 21ms
+  STRIDE : 5.2ms ( 75% duplicated )
+  FRAME_LENGTH = N_FFT / SAMPLE_RATE => N_FFT = 336
+  STRIDE = HOP_LENGTH / SAMPLE_RATE => STRIDE = 168
+
 """
 
 import torch

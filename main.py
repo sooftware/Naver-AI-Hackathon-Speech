@@ -1,4 +1,21 @@
-#-*- coding: utf-8 -*-
+'''
+  -*- coding: utf-8 -*-
+
+  Naver A.I Hackathon 2019 - Speech
+
+  Team Kai.Lib
+  Rank : 12
+  CRR : 75.33% (Character Recognition Rate)
+
+  # Team Member
+   김수환 KWU. elcomm 3rd year.  https://github.com/sh951011
+   배세영 KWU. elcomm 3rd year.  https://github.com/triplet02
+   원철황 KWU. elcomm 3rd year.  https://github.com/wch18735
+
+  GitHub Repository : https://github.com/sh951011/Naver-AI-Hackathon-2019-Speech-Team_Kai.Lib
+
+'''
+
 import queue
 import torch
 import random
@@ -19,106 +36,107 @@ global PAD_token
 DATASET_PATH = './data/'
 target_dict = dict()
 
-h_params = HyperParams()
-#h_params.input_params()
+if __name__ == '__main__':
+    h_params = HyperParams()
+    h_params.input_params()
 
-char2index, index2char = label_loader.load_label('./hackathon.labels')
-SOS_token = char2index['<s>']
-EOS_token = char2index['</s>']
-PAD_token = char2index['_']
+    char2index, index2char = label_loader.load_label('./hackathon.labels')
+    SOS_token = char2index['<s>']
+    EOS_token = char2index['</s>']
+    PAD_token = char2index['_']
 
-random.seed(h_params.seed)
-torch.manual_seed(h_params.seed)
-torch.cuda.manual_seed_all(h_params.seed)
-cuda = not h_params.no_cuda and torch.cuda.is_available()
-device = torch.device('cuda' if cuda else 'cpu')
+    random.seed(h_params.seed)
+    torch.manual_seed(h_params.seed)
+    torch.cuda.manual_seed_all(h_params.seed)
+    cuda = not h_params.no_cuda and torch.cuda.is_available()
+    device = torch.device('cuda' if cuda else 'cpu')
 
-feature_size = 40  # MFCC n_mfcc = 40이라 40
+    feature_size = 40  # MFCC n_mfcc = 40이라 40
 
-enc = EncoderRNN(feature_size, h_params.hidden_size ,
-                 input_dropout_p = h_params.dropout, dropout_p = h_params.dropout,
-                 n_layers = h_params.encoder_layer_size,
-                 bidirectional = h_params.bidirectional, rnn_cell = 'gru', variable_lengths = False)
+    enc = EncoderRNN(feature_size, h_params.hidden_size ,
+                     input_dropout_p = h_params.dropout, dropout_p = h_params.dropout,
+                     n_layers = h_params.encoder_layer_size,
+                     bidirectional = h_params.bidirectional, rnn_cell = 'gru', variable_lengths = False)
 
-dec = DecoderRNN(len(char2index), h_params.max_len, h_params.hidden_size * (2 if h_params.bidirectional else 1),
-                 SOS_token, EOS_token,
-                 n_layers = h_params.decoder_layer_size, rnn_cell = 'gru', bidirectional = h_params.bidirectional,
-                 input_dropout_p = h_params.dropout, dropout_p = h_params.dropout, use_attention = h_params.attention)
+    dec = DecoderRNN(len(char2index), h_params.max_len, h_params.hidden_size * (2 if h_params.bidirectional else 1),
+                     SOS_token, EOS_token,
+                     n_layers = h_params.decoder_layer_size, rnn_cell = 'gru', bidirectional = h_params.bidirectional,
+                     input_dropout_p = h_params.dropout, dropout_p = h_params.dropout, use_attention = h_params.attention)
 
-model = Seq2seq(enc, dec)
-model.flatten_parameters()
-model = nn.DataParallel(model).to(device) # 병렬처리 부분인 듯
+    model = Seq2seq(enc, dec)
+    model.flatten_parameters()
+    model = nn.DataParallel(model).to(device) # 병렬처리 부분인 듯
 
-# Adam Algorithm
-optimizer = optim.Adam(model.module.parameters(), lr = h_params.lr)
-# CrossEntropy로 loss 계산
-criterion = nn.CrossEntropyLoss(reduction='sum', ignore_index=PAD_token).to(device)
+    # Adam Algorithm
+    optimizer = optim.Adam(model.module.parameters(), lr = h_params.lr)
+    # CrossEntropy로 loss 계산
+    criterion = nn.CrossEntropyLoss(reduction='sum', ignore_index=PAD_token).to(device)
 
-# 데이터 로드 start
-data_list = os.path.join(DATASET_PATH, 'train_data', 'data_list.csv')
-wav_paths = list()
-script_paths = list()
+    # 데이터 로드 start
+    data_list = os.path.join(DATASET_PATH, 'train_data', 'data_list.csv')
+    wav_paths = list()
+    script_paths = list()
 
-with open(data_list, 'r') as f:
-    for line in f:
-        # line: "aaa.wav,aaa.label"
-        wav_path, script_path = line.strip().split(',') # wav_path 여기 있음!!
-        wav_paths.append(os.path.join(DATASET_PATH, 'train_data', wav_path))
-        script_paths.append(os.path.join(DATASET_PATH, 'train_data', script_path))
+    with open(data_list, 'r') as f:
+        for line in f:
+            # line: "aaa.wav,aaa.label"
+            wav_path, script_path = line.strip().split(',') # wav_path 여기 있음!!
+            wav_paths.append(os.path.join(DATASET_PATH, 'train_data', wav_path))
+            script_paths.append(os.path.join(DATASET_PATH, 'train_data', script_path))
 
-best_loss = 1e10
-best_cer = 1.0
-begin_epoch = 0
+    best_loss = 1e10
+    best_cer = 1.0
+    begin_epoch = 0
 
-# load all target scripts for reducing disk i/o
-target_path = os.path.join(DATASET_PATH, 'train_label')
-load_targets(target_path, target_dict)
+    # load all target scripts for reducing disk i/o
+    target_path = os.path.join(DATASET_PATH, 'train_label')
+    load_targets(target_path, target_dict)
 
-# 데이터 로드 end
-train_batch_num, train_dataset_list, valid_dataset = split_dataset(h_params, wav_paths,
-                                                                   script_paths,
-                                                                   valid_ratio = 0.05,
-                                                                   target_dict = target_dict)
-
-
-logger.info('start')
-train_begin = time.time()
+    # 데이터 로드 end
+    train_batch_num, train_dataset_list, valid_dataset = split_dataset(h_params, wav_paths,
+                                                                       script_paths,
+                                                                       valid_ratio = 0.05,
+                                                                       target_dict = target_dict)
 
 
-for epoch in range(begin_epoch, h_params.max_epochs):
-    train_queue = queue.Queue(h_params.workers * 2)
+    logger.info('start')
+    train_begin = time.time()
 
-    train_loader = MultiLoader(train_dataset_list, train_queue, h_params.batch_size, h_params.workers)
-    train_loader.start()
 
-    if epoch == 25:
-        optimizer = optim.Adam(model.module.parameters(), lr = 0.00005 )
-        h_params.teacher_forcing = 0.99
+    for epoch in range(begin_epoch, h_params.max_epochs):
+        train_queue = queue.Queue(h_params.workers * 2)
 
-    train_loss, train_cer = train(model, train_batch_num,
-                                  train_queue, criterion,
-                                  optimizer, device,
-                                  train_begin, h_params.workers,
-                                  10, h_params.teacher_forcing)
+        train_loader = MultiLoader(train_dataset_list, train_queue, h_params.batch_size, h_params.workers)
+        train_loader.start()
 
-    logger.info('Epoch %d (Training) Loss %0.4f CER %0.4f' % (epoch, train_loss, train_cer))
+        if epoch == 25:
+            optimizer = optim.Adam(model.module.parameters(), lr = 0.00005 )
+            h_params.teacher_forcing = 0.99
 
-    train_loader.join()
+        train_loss, train_cer = train(model, train_batch_num,
+                                      train_queue, criterion,
+                                      optimizer, device,
+                                      train_begin, h_params.workers,
+                                      10, h_params.teacher_forcing)
 
-    valid_queue = queue.Queue(h_params.workers * 2)
-    valid_loader = BaseDataLoader(valid_dataset, valid_queue, h_params.batch_size, 0)
-    valid_loader.start()
+        logger.info('Epoch %d (Training) Loss %0.4f CER %0.4f' % (epoch, train_loss, train_cer))
 
-    eval_loss, eval_cer = evaluate(model, valid_loader, valid_queue, criterion, device)
-    logger.info('Epoch %d (Evaluate) Loss %0.4f CER %0.4f' % (epoch, eval_loss, eval_cer))
+        train_loader.join()
 
-    valid_loader.join()
+        valid_queue = queue.Queue(h_params.workers * 2)
+        valid_loader = BaseDataLoader(valid_dataset, valid_queue, h_params.batch_size, 0)
+        valid_loader.start()
 
-    is_best_loss = (eval_loss < best_loss)
-    is_best_cer = (eval_cer < best_cer)
+        eval_loss, eval_cer = evaluate(model, valid_loader, valid_queue, criterion, device)
+        logger.info('Epoch %d (Evaluate) Loss %0.4f CER %0.4f' % (epoch, eval_loss, eval_cer))
 
-    if is_best_loss:
-        torch.save(model, "./best_loss")
+        valid_loader.join()
 
-    if is_best_cer:
-        torch.save(model, "./best_cer")
+        is_best_loss = (eval_loss < best_loss)
+        is_best_cer = (eval_cer < best_cer)
+
+        if is_best_loss:
+            torch.save(model, "./best_loss")
+
+        if is_best_cer:
+            torch.save(model, "./best_cer")

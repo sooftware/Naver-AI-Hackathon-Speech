@@ -1,3 +1,21 @@
+'''
+  -*- coding: utf-8 -*-
+
+  Naver A.I Hackathon 2019 - Speech
+
+  Team Kai.Lib
+  Rank : 12
+  CRR : 75.33% (Character Recognition Rate)
+
+  # Team Member
+   김수환 KWU. elcomm 3rd year.  https://github.com/sh951011
+   배세영 KWU. elcomm 3rd year.  https://github.com/triplet02
+   원철황 KWU. elcomm 3rd year.  https://github.com/wch18735
+
+  GitHub Repository : https://github.com/sh951011/Naver-AI-Hackathon-2019-Speech-Team_Kai.Lib
+
+'''
+
 import Levenshtein as Lev
 import time
 import os
