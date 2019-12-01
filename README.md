@@ -10,9 +10,9 @@ Korean-Speech-Recognition Using Pytorch.
 Naver 2019 Hackathon - Speech   Team Kai.Lib   
 [Demonstration Application](https://github.com/sh951011/My-Capstone-Application)  
 ## Team Member
-* [김수환](https://github.com/sh951011) Kwangwoon Univ. Electronic-Communication Dept. 3rd year   
-* [배세영](https://github.com/triplet02) Kwangwoon Univ. Electronic-Communication Dept. 3rd year  
-* [원철황](https://github.com/wch18735) Kwangwoon Univ. Electronic-Communication Dept. 3rd year  
+* [김수환](https://github.com/sh951011) KWU. elcomm 3rd year   
+* [배세영](https://github.com/triplet02) KWU. elcomm 3rd year  
+* [원철황](https://github.com/wch18735) KWU. elcomm 3rd year  
 ## Model
 ![seq2seq_with_attention_(bidirectional)](https://postfiles.pstatic.net/MjAxOTExMjdfMTk4/MDAxNTc0ODIxODc3MTkx.0JdK_SdhSHTGjkYpHhDq4MlztY4pn93g9ZoPRTotxbwg.uwbhrBU7jqTUFLKOZRU9pnBRX0kUU35Gy70P01JLdvcg.PNG.sooftware/image.png?type=w773)  
 - Model Architecture : Seq2seq with Convolution Layer  
