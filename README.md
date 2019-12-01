@@ -3,7 +3,7 @@
  Team : Kai.Lib  
  Rank : 12   
  CRR : 75.33%    
-![Kai](https://postfiles.pstatic.net/MjAxOTEwMjZfMjE4/MDAxNTcyMDc4NjQ2NjI3.s9fnZvZKtm3qRGBpKZv3zSQwj70TS07EiOyutpGSpjAg.r3-m8zykBCLFJ2BhF1dhreyD5liI2NsnOh9bVSgkPZwg.PNG.sooftware/Kai.PNG?type=w773)  
+![Kai](https://postfiles.pstatic.net/MjAxOTEyMDFfMjk0/MDAxNTc1MTU4OTEzMTY5.p94e6gtkSe_1rbnqJqUa1n9zGV5ERgaiGtn5ZD34BtEg.d-aKHRjRWFsMKbltRoHAn1Gn06lJiwOmLl8ykiu59okg.PNG.sooftware/image.png?type=w773)  
 Korean-Speech-Recognition Using Pytorch.   
 Naver 2019 Hackathon - Speech   Team Kai.Lib   
 [Demonstration Application](https://github.com/sh951011/My-Capstone-Application)  
