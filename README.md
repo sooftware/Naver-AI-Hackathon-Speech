@@ -147,7 +147,7 @@ CRR = (1.0 - CER) * 100.0
   + MFCC 설명 : https://blog.naver.com/sooftware/221661644808  
 ## Reference
 * Model  
-  + based on IBM pytorch-seq2seq : https://github.com/IBM/pytorch-seq2seq
+  + IBM pytorch-seq2seq : https://github.com/IBM/pytorch-seq2seq
 * Dataset  
   + Dataset : https://github.com/clovaai/speech_hackathon_2019
 ## License
