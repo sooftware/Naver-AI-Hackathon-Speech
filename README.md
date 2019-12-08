@@ -89,7 +89,7 @@ Seq2seq(
 * dropout : (init) 0.5  (after epoch 25) 0.3  
 * teacher_forcing : (init) 0.80  (after epoch 25) 0.99  
 * lr : (init) 1e-4  (after epoch 25) 5e-5  
-## Hyper Parameters Tuning  
+## Hyper Parameter Tuning  
 60시간 데이터로 실험   
   
 ![experiment_table](https://postfiles.pstatic.net/MjAxOTExMDdfMyAg/MDAxNTczMTE1MzI3Njgw.7FzpAYgiE2fVLT7BGO1QQfLLKpwlMlFRVA_KG0jJb9Ug.h_PTVerEJAUNiBbl-VgmImverS7YptfPuLe6D6b9-hsg.PNG.sooftware/image.png?type=w773)   
@@ -147,7 +147,7 @@ CRR = (1.0 - CER) * 100.0
   + MFCC 설명 : https://blog.naver.com/sooftware/221661644808  
 ## Reference
 * Model  
-  + IBM pytorch-seq2seq : https://github.com/IBM/pytorch-seq2seq
+  + IBM pytorch-seq2seq (https://github.com/IBM/pytorch-seq2seq) 모델 사용
 * Dataset  
   + Dataset : https://github.com/clovaai/speech_hackathon_2019
 ## License
