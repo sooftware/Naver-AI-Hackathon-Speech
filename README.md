@@ -15,7 +15,7 @@ Naver 2019 Hackathon - Speech   Team Kai.Lib
 * [원철황](https://github.com/wch18735) KWU. elcomm 3rd year  
 ## Model
 ![seq2seq_with_attention_(bidirectional)](https://postfiles.pstatic.net/MjAxOTExMjdfMTk4/MDAxNTc0ODIxODc3MTkx.0JdK_SdhSHTGjkYpHhDq4MlztY4pn93g9ZoPRTotxbwg.uwbhrBU7jqTUFLKOZRU9pnBRX0kUU35Gy70P01JLdvcg.PNG.sooftware/image.png?type=w773)  
-- Model Architecture : Seq2seq with Convolution Layer  
+- Model Architecture : Seq2seq with Attention  
 ```python
 Seq2seq(
   (encoder): EncoderRNN(
