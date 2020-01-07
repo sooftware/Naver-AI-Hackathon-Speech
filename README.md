@@ -146,7 +146,7 @@ CRR = (1.0 - CER) * 100.0
   + stride : 5.2ms
   + [MFCC](https://blog.naver.com/sooftware/221661644808)  
 ## Further Work  
-Further Works are being in this Repository : https://github.com/sh951011/Korean-ASR
+Further Works are being in this Repository : https://github.com/sh951011/Korean-Speech-Recognition
 ## Reference
 * Model  
   + IBM pytorch-seq2seq (https://github.com/IBM/pytorch-seq2seq) 모델 사용
