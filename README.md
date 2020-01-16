@@ -15,7 +15,7 @@ Naver 2019 Hackathon - Speech   Team Kai.Lib
 * [원철황](https://github.com/wch18735) KWU. elcomm 3rd year  
 ## Model
 ![seq2seq_with_attention_(bidirectional)](https://postfiles.pstatic.net/MjAxOTExMjdfMTk4/MDAxNTc0ODIxODc3MTkx.0JdK_SdhSHTGjkYpHhDq4MlztY4pn93g9ZoPRTotxbwg.uwbhrBU7jqTUFLKOZRU9pnBRX0kUU35Gy70P01JLdvcg.PNG.sooftware/image.png?type=w773)  
-- Model Architecture : Seq2seq with Convolution Layer  
+- Model Architecture : Seq2seq with Attention  
 ```python
 Seq2seq(
   (encoder): EncoderRNN(
@@ -89,7 +89,7 @@ Seq2seq(
 * dropout : (init) 0.5  (after epoch 25) 0.3  
 * teacher_forcing : (init) 0.80  (after epoch 25) 0.99  
 * lr : (init) 1e-4  (after epoch 25) 5e-5  
-## Hyper Parameters Experiment  
+## Hyper Parameter Tuning  
 60시간 데이터로 실험   
   
 ![experiment_table](https://postfiles.pstatic.net/MjAxOTExMDdfMyAg/MDAxNTczMTE1MzI3Njgw.7FzpAYgiE2fVLT7BGO1QQfLLKpwlMlFRVA_KG0jJb9Ug.h_PTVerEJAUNiBbl-VgmImverS7YptfPuLe6D6b9-hsg.PNG.sooftware/image.png?type=w773)   
@@ -144,12 +144,15 @@ CRR = (1.0 - CER) * 100.0
   + frame length : 21ms  
   + overlap : 15.8ms (75%)  
   + stride : 5.2ms
-  + MFCC 설명 : https://blog.naver.com/sooftware/221661644808  
+  + [MFCC](https://blog.naver.com/sooftware/221661644808)  
+## Further Work  
+Further Works are being in this Repository : https://github.com/sh951011/Korean-Speech-Recognition
 ## Reference
 * Model  
-  + based on IBM pytorch-seq2seq : https://github.com/IBM/pytorch-seq2seq
+  + IBM pytorch-seq2seq (https://github.com/IBM/pytorch-seq2seq) 모델 사용
 * Dataset  
-  + Dataset : https://github.com/clovaai/speech_hackathon_2019
+  + [Dataset-Part1](https://drive.google.com/file/d/1UOspFSTJ2w0wsENIeD6Ilcy5dd4NTsDV/view)
+  + [Dataset-Part2](https://drive.google.com/file/d/1Bh0vodkng3_SF7lLa82KePv6S7jzYEQV/view)
 ## License
 ```
 Licensed under the Apache License, Version 2.0 (the "License");
