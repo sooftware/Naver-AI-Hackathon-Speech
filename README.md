@@ -1,4 +1,5 @@
 # Naver-AI-Hackathon-2019-Speech-Team_Kai.Lib  
+![license](https://img.shields.io/github/license/sh951011/Naver-AI-Hackathon-2019-Speech-Team_Kai.Lib) ![fork](https://img.shields.io/github/forks/sh951011/Naver-AI-Hackathon-2019-Speech-Team_Kai.Lib) ![stars](https://img.shields.io/github/stars/sh951011/Naver-AI-Hackathon-2019-Speech-Team_Kai.Lib)  
  네이버 AI 해커톤 2019 - Speech Team Kai.Lib  
  Team : Kai.Lib  
  Rank : 12   
@@ -14,7 +15,7 @@ Naver 2019 Hackathon - Speech   Team Kai.Lib
 * [배세영](https://github.com/triplet02) KWU. elcomm 3rd year  
 * [원철황](https://github.com/wch18735) KWU. elcomm 3rd year  
 ## Model
-![seq2seq_with_attention_(bidirectional)](https://postfiles.pstatic.net/MjAxOTExMjdfMTk4/MDAxNTc0ODIxODc3MTkx.0JdK_SdhSHTGjkYpHhDq4MlztY4pn93g9ZoPRTotxbwg.uwbhrBU7jqTUFLKOZRU9pnBRX0kUU35Gy70P01JLdvcg.PNG.sooftware/image.png?type=w773)  
+![seq2seq_with_attention_(bidirectional)](https://postfiles.pstatic.net/MjAyMDAxMTlfMjkw/MDAxNTc5MzY4NDY0NTA1.Tt6HY6fz84gihNXFQtBcnQt6oSDVgox7Asn6Fa6WU-og.bckaR29Oki9o7tzoWvSoneQIqLH0Ip6O8QO_yY3gSGQg.GIF.sooftware/Model-Architecture.gif?type=w773)  
 - Model Architecture : Seq2seq with Attention  
 ```python
 Seq2seq(
