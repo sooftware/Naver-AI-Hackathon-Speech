@@ -17,33 +17,26 @@
 '''
 
 import queue
+import time
+
 import torch
 import random
 import os
 import torch.nn as nn
 import torch.optim as optim
-from funcCall import *
-from loader import label_loader
-from models import EncoderRNN, DecoderRNN, Seq2seq
-from hyperParams import HyperParams
-
-global target_dict
-global char2index
-global index2char
-global SOS_token
-global EOS_token
-global PAD_token
-DATASET_PATH = './data/'
-target_dict = dict()
+from models.EncoderRNN import EncoderRNN
+from models.DecoderRNN import DecoderRNN
+from models.seq2seq import Seq2seq
+from utils.data import split_dataset
+from utils.evaluator import evaluate
+from utils.hparams import HyperParams
+from utils.load import load_targets
+from utils.define import *
+from utils.loader import MultiLoader, BaseDataLoader
+from utils.trainer import train
 
 if __name__ == '__main__':
     h_params = HyperParams()
-    h_params.input_params()
-
-    char2index, index2char = label_loader.load_label('./hackathon.labels')
-    SOS_token = char2index['<s>']
-    EOS_token = char2index['</s>']
-    PAD_token = char2index['_']
 
     random.seed(h_params.seed)
     torch.manual_seed(h_params.seed)
@@ -53,7 +46,7 @@ if __name__ == '__main__':
 
     feature_size = 40  # MFCC n_mfcc = 40이라 40
 
-    enc = EncoderRNN(feature_size, h_params.hidden_size ,
+    enc = EncoderRNN(feature_size, h_params.hidden_size,
                      input_dropout_p = h_params.dropout, dropout_p = h_params.dropout,
                      n_layers = h_params.encoder_layer_size,
                      bidirectional = h_params.bidirectional, rnn_cell = 'gru', variable_lengths = False)

@@ -14,14 +14,18 @@ See the License for the specific language governing permissions and
 limitations under the License.
 """
 
-#-*- coding: utf-8 -*-
+def load_targets(path, target_dict):
+    with open(path, 'r') as f:
+        for no, line in enumerate(f):
+            key, target = line.strip().split(',')
+            target_dict[key] = target
 
 def load_label(label_path):
     char2index = dict() # [ch] = id
     index2char = dict() # [id] = ch
     with open(label_path, 'r', encoding = 'UTF-8') as f:
         for no, line in enumerate(f):
-            if line[0] == '#': 
+            if line[0] == '#':
                 continue
             index, char, freq = line.strip().split('\t')
             char = char.strip()
