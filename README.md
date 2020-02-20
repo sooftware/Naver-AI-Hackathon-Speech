@@ -1,5 +1,5 @@
 # Naver-AI-Hackathon-2019-Speech-Team_Kai.Lib  
-![license](https://img.shields.io/github/license/sh951011/Naver-AI-Hackathon-2019-Speech-Team_Kai.Lib) ![fork](https://img.shields.io/github/forks/sh951011/Naver-AI-Hackathon-2019-Speech-Team_Kai.Lib) ![stars](https://img.shields.io/github/stars/sh951011/Naver-AI-Hackathon-2019-Speech-Team_Kai.Lib)  
+![license](https://img.shields.io/github/license/sh951011/Korean-Speech-Recognition) ![category](https://img.shields.io/badge/category-Speech-informational) ![framework](https://img.shields.io/badge/framework-PyTorch-Red) ![language](https://img.shields.io/badge/language-Korean-lightgrey) ![team](https://img.shields.io/badge/Team-Kai.Lib-yellowgreen)    
  네이버 AI 해커톤 2019 - Speech Team Kai.Lib  
  Team : Kai.Lib  
  Rank : 12   
