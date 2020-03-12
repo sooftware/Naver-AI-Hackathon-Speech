@@ -148,10 +148,11 @@ CRR = (1.0 - CER) * 100.0
   + [MFCC](https://blog.naver.com/sooftware/221661644808)  
 
 ## Reference 
- [[1] IBM pytorch-seq2seq](https://github.com/IBM/pytorch-seq2seq)
- [[2] Further Works](https://github.com/sh951011/Korean-Speech-Recognition)
- [[3] Dataset-Part1](https://drive.google.com/file/d/1UOspFSTJ2w0wsENIeD6Ilcy5dd4NTsDV/view)
- [[4] Dataset-Part2](https://drive.google.com/file/d/1Bh0vodkng3_SF7lLa82KePv6S7jzYEQV/view)
+  
+ [[1] IBM pytorch-seq2seq](https://github.com/IBM/pytorch-seq2seq)  
+ [[2] Further Works](https://github.com/sh951011/Korean-Speech-Recognition)  
+ [[3] Dataset-Part1](https://drive.google.com/file/d/1UOspFSTJ2w0wsENIeD6Ilcy5dd4NTsDV/view)  
+ [[4] Dataset-Part2](https://drive.google.com/file/d/1Bh0vodkng3_SF7lLa82KePv6S7jzYEQV/view)  
   
 ## License
 ```
