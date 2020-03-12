@@ -146,14 +146,13 @@ CRR = (1.0 - CER) * 100.0
   + overlap : 15.8ms (75%)  
   + stride : 5.2ms
   + [MFCC](https://blog.naver.com/sooftware/221661644808)  
-## Further Work  
-Further Works are being in this Repository : https://github.com/sh951011/Korean-Speech-Recognition
-## Reference
-* Model  
-  + IBM pytorch-seq2seq (https://github.com/IBM/pytorch-seq2seq) 모델 사용
-* Dataset  
-  + [Dataset-Part1](https://drive.google.com/file/d/1UOspFSTJ2w0wsENIeD6Ilcy5dd4NTsDV/view)
-  + [Dataset-Part2](https://drive.google.com/file/d/1Bh0vodkng3_SF7lLa82KePv6S7jzYEQV/view)
+
+## Reference 
+ [[1] IBM pytorch-seq2seq](https://github.com/IBM/pytorch-seq2seq)
+ [[2] Further Works](https://github.com/sh951011/Korean-Speech-Recognition)
+ [[3] Dataset-Part1](https://drive.google.com/file/d/1UOspFSTJ2w0wsENIeD6Ilcy5dd4NTsDV/view)
+ [[4] Dataset-Part2](https://drive.google.com/file/d/1Bh0vodkng3_SF7lLa82KePv6S7jzYEQV/view)
+  
 ## License
 ```
 Licensed under the Apache License, Version 2.0 (the "License");
