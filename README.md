@@ -1,5 +1,5 @@
 # Naver-AI-Hackathon-2019-Speech-Team_Kai.Lib  
-![license](https://img.shields.io/github/license/sh951011/Korean-Speech-Recognition) ![category](https://img.shields.io/badge/category-Speech-informational) ![framework](https://img.shields.io/badge/framework-PyTorch-Red) ![language](https://img.shields.io/badge/language-Korean-lightgrey) ![team](https://img.shields.io/badge/Team-Kai.Lib-yellowgreen)    
+[<img src="https://github.com/gentaiscool/end2end-asr-pytorch/raw/master/img/pytorch-logo-dark.png" height=18>](https://pytorch.org/) <img src="https://img.shields.io/badge/License-Apache--2.0-yellow" height=20> [<img src="https://img.shields.io/badge/chat-on%20gitter-4fb99a" height=20>](https://gitter.im/Korean-Speech-Recognition/community)  
  네이버 AI 해커톤 2019 - Speech Team Kai.Lib  
  Team : Kai.Lib  
  Rank : 12   
