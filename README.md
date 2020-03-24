@@ -10,6 +10,9 @@
 Korean-Speech-Recognition Using Pytorch.   
 Naver 2019 Hackathon - Speech   Team Kai.Lib   
 [Demonstration Application](https://github.com/sh951011/My-Capstone-Application)  
+  
+Our Further Works is in progress [here](https://github.com/sooftware/Korean-Speech-Recognition)  
+  
 ## Team Member
 * [김수환](https://github.com/sh951011) KWU. elcomm 3rd year   
 * [배세영](https://github.com/triplet02) KWU. elcomm 3rd year  
