@@ -96,8 +96,9 @@ Seq2seq(
 ## Hyper Parameter Tuning  
 60시간 데이터로 실험   
   
-![experiment-table](https://user-images.githubusercontent.com/42150335/78292817-98dbae00-7562-11ea-831d-bdd4185a8d5c.png) 
+![experiment-table](https://user-images.githubusercontent.com/42150335/78292817-98dbae00-7562-11ea-831d-bdd4185a8d5c.png)   
 CRR : Character Recognition Rate  
+  
 ## Data
 네이버에서 제공한 100시간 데이터 사용
 ### Data format
