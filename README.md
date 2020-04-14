@@ -14,9 +14,8 @@ Naver 2019 Hackathon - Speech   Team Kai.Lib
 Our Further Works is in progress [here](https://github.com/sooftware/Korean-Speech-Recognition)  
   
 ## Team Member
-* [김수환](https://github.com/sh951011) KWU. elcomm 3rd year   
-* [배세영](https://github.com/triplet02) KWU. elcomm 3rd year  
-* [원철황](https://github.com/wch18735) KWU. elcomm 3rd year  
+[![KimSooHwan](https://postfiles.pstatic.net/MjAyMDAyMjBfMTIz/MDAxNTgyMTgzMTg0NjQ0.WkBpWhKQ8YT8Ct9BHrdD44Yn6l-1f-lCNjdIE8uU5e8g.UUvRfvxb1cfn6Ml1ZQzE_4kv6QYsvgBpuiSiTWSEZMIg.PNG.sooftware/image.png?type=w773)](https://github.com/sh951011)   [![BaeSeYoung](https://postfiles.pstatic.net/MjAyMDAyMjBfMjgx/MDAxNTgyMTgzMjA5MDM1.bUVfaKWb3MZ4eJVFawmTHVdQs1aohO4CUW7qHTC38okg.NGBQL8cunnwMnh3Pt8CWkRWlMqAHVOkNMJCowKd1wAAg.PNG.sooftware/image.png?type=w773)](https://github.com/triplet02)   [![WonCheolHwang](https://postfiles.pstatic.net/MjAyMDAyMjBfMjIg/MDAxNTgyMTgzMjIzMzcx.knqFUOpdhk1l_GLZWvz0zelNf-QJtA_yjaoYuKBJpN8g.U5EhVv_elOcufKYTOaaJof1ZqjHOaYlDHAyCBcsXjdAg.PNG.sooftware/image.png?type=w773)](https://github.com/wch18735)
+  
 ## Model
 ![seq2seq_with_attention_(bidirectional)](https://postfiles.pstatic.net/MjAyMDAxMTlfMjkw/MDAxNTc5MzY4NDY0NTA1.Tt6HY6fz84gihNXFQtBcnQt6oSDVgox7Asn6Fa6WU-og.bckaR29Oki9o7tzoWvSoneQIqLH0Ip6O8QO_yY3gSGQg.GIF.sooftware/Model-Architecture.gif?type=w773)  
 - Model Architecture : Seq2seq with Attention  
