@@ -1,5 +1,7 @@
-# Naver-AI-Hackathon-2019-Speech-Team_Kai.Lib  
-[<img src="https://github.com/gentaiscool/end2end-asr-pytorch/raw/master/img/pytorch-logo-dark.png" height=18>](https://pytorch.org/) <img src="https://img.shields.io/badge/License-Apache--2.0-yellow" height=20> [<img src="https://img.shields.io/badge/chat-on%20gitter-4fb99a" height=20>](https://gitter.im/Korean-Speech-Recognition/community)  
+# Naver AI Hackathon Speech - Team Kai.Lib  
+  
+[<img src="https://github.com/gentaiscool/end2end-asr-pytorch/raw/master/img/pytorch-logo-dark.png" height=18>](https://pytorch.org/) <img src="https://img.shields.io/badge/License-Apache--2.0-yellow" height=20>   
+  
  네이버 AI 해커톤 2019 - Speech Team Kai.Lib  
  Team : Kai.Lib  
  Rank : 12   
